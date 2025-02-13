@@ -20,8 +20,13 @@ public class DeathStarTest {
 	 */
 	@Test
 	public void testShootPlanetIntegration() {
-		// TODO: Fill in!
-		fail();
+		// Preconditions
+		DeathStar ds = new DeathStar();
+		Planet p = new Planet(10);
+
+		// Checking postconditions
+		assertEquals("Wimpy planet was hit by the superlaser!", ds.shoot(p)); // return value
+		assertEquals(10 - 100, p.getHitPoints());
 	}
 
 	/**
@@ -37,7 +42,17 @@ public class DeathStarTest {
 	 */
 	@Test
 	public void testShootPlanetUnit() {
-		// TODO: Fill in!
-		fail();
+		// Preconditions
+		DeathStar ds = new DeathStar();
+		Planet p = Mockito.mock(Planet.class);
+
+		// Define mock behavior
+		Mockito.when(p.toString()).thenReturn("Wimpy planet");
+		Mockito.when(p.getHitPoints()).thenReturn(10);
+		Mockito.doNothing().when(p).damage(100);
+
+		assertEquals("Wimpy planet was hit by the superlaser!", ds.shoot(p));
+
+		Mockito.verify(p).damage(100);
 	}
 }
