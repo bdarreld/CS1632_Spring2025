@@ -23,6 +23,8 @@ public class JPFTest extends TestJPF {
 
 	public static void setUp() {
 		// TODO: Fill in. Test all x, y where -10 <= x <= 10 and -10 <= y <= 10.
+		x = Verify.getInt(-10, 10);
+		y = Verify.getInt(-10, 10);
 	}
 
 	@Test
@@ -42,6 +44,7 @@ public class JPFTest extends TestJPF {
 
 		int ret = IntegerOps.square(x);
 		// TODO: Fill in.
+		assertEquals(x * x, ret);
 	}
 
 	@Test
@@ -61,6 +64,7 @@ public class JPFTest extends TestJPF {
 
 		int ret = IntegerOps.add(x, y);
 		// TODO: Fill in.
+		assertEquals(x + y, ret);
 	}
 
 }
